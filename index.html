@@ -8,13 +8,20 @@
   <script type="text/javascript">
 questions = new Array();
 question = null;
+answer = -1;
+t = null;
+function get(k){
+    return document.getElementById("answer_"+key);
+}
 
 function putAnswer(key){
-    window.setTimeout("putExplain",TIME);
+    get(key).style.backgroundImage = "url(images/Button_"+key+"_geklickt.gif)";
+    t = window.setTimeout("putExplain",TIME);
 }
 
 function putExplain(){
-    window.setTimeout("loop",TIME);
+    document.getElementById("answer").innerHTML = '<div id="answer_text">'+question["answer"]+'</div>';
+    t = window.setTimeout("loop",TIME);
 }
 
 function shuffle(o){for(var j,x,i=o.length;i;j=Math.floor(Math.random()*i),x=o[--i],o[i]=o[j],o[j]= x);return o;}
@@ -26,6 +33,27 @@ function loop(){
         questions = shuffle(questions);
     }
     question = questions.pop();
+
+    answer = -1;
+    get("question").innerHTML = question["question"];
+    s = "";
+    for(i=0;i<4;i++){
+        s += '<div id="answer_'+i+'">'+question[i]+'</div>';
+    }
+    get("answer").innerHTML = s;
+
+    t = window.setTimeout("putAnswer",TIME);
+}
+
+window.onkeyup = function(e) {
+    var key = e.keyCode ? e.keyCode : e.which;
+
+    key = key-64;
+    if(key >= 0 && key < 4){
+        answer = key;
+        window.clearTimeout(t);
+        putAnswer();
+    }
 }
   </script>
  </head>
@@ -33,11 +61,11 @@ function loop(){
   <div id="main">
    <div id="question">Frage Frage</div>
    <div id="answer">
-<!-- Variante A: Antworten anzeigen 
+       <!-- Variante A: Antworten anzeigen -->
     <div id="answer_0">Aber bitte</div>
     <div id="answer_1">Bbere</div>
     <div id="answer_2">Cere cit canum</div>
-    <div id="answer_3">Ddendum it salamat</div> -->
+    <div id="answer_3">Ddendum it salamat</div><!-- -->
 <!-- Variante B: Lösung anzeigen
     <div id="answer_text">Heres the Text</div> -->
    </div>
