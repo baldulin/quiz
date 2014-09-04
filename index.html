@@ -3,32 +3,78 @@
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title></title>
-  <link rel="stylesheet" type="text/css" href="style.css">
   <script type="text/javascript" src="questions.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script type="text/javascript">
-/* Your Code here */
-function shuffle(o){
-	for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-	return o;
-};
+questions = new Array();
+question = null;
+answer = -1;
+function get(k){
+    return document.getElementById(k);
+}
 
-shuffle(data);
+function putAnswer(){
+    get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_geklick.gif)";
+    window.setTimeout("putCorrect();",20);
+}
 
-alert(data[0]["question"]);
+function putCorrect(){
+    s = question["solution"] - 1;
+    get("answer_"+s).style.backgroundImage = "url(images/Button_"+s+"_richtig.gif)";
+    if(s != answer){
+        get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_gecklick.gif)";
+    }
+    window.setTimeout("putExplain();",20)
+}
+
+function putExplain(){
+    get("answer").innerHTML = '<div id="answer_text">'+question["text"]+'</div>';
+    window.setTimeout("loop();",60);
+}
+
+function shuffle(o){for(var j,x,i=o.length;i;j=Math.floor(Math.random()*i),x=o[--i],o[i]=o[j],o[j]= x);return o;}
+
+function loop(){
+    // Do Timeout Stuff here
+    if(questions.length == 0){
+        questions = shuffle(data);
+    }
+    question = questions.pop();
+
+    get("question").innerHTML = question["question"];
+    s = "";
+    for(i=0;i<4;i++){
+        s += '<div id="answer_'+i+'">'+question["answers"][i]+'</div>';
+    }
+    get("answer").innerHTML = s;
+    answer = -1;
+
+    //window.setTimeout("putAnswer",60);
+}
+
+window.onkeyup = function(e) {
+    var key = e.keyCode ? e.keyCode : e.which;
+    key = key-65;
+    if(key >= 0 && key < 4 && answer == -1){
+        answer = key;
+        putAnswer();
+    }
+}
   </script>
  </head>
  <body>
   <div id="main">
    <div id="question">Frage Frage</div>
    <div id="answer">
-<!-- Variante A: Antworten anzeigen 
+       <!-- Variante A: Antworten anzeigen -->
     <div id="answer_0">Aber bitte</div>
     <div id="answer_1">Bbere</div>
     <div id="answer_2">Cere cit canum</div>
-    <div id="answer_3">Ddendum it salamat</div> -->
+    <div id="answer_3">Ddendum it salamat</div><!-- -->
 <!-- Variante B: Lösung anzeigen
     <div id="answer_text">Heres the Text</div> -->
    </div>
   </div>
+  <script type="text/javascript">loop();</script>
  </body>
 </html>
