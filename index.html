@@ -9,19 +9,27 @@
 questions = new Array();
 question = null;
 answer = -1;
-t = null;
 function get(k){
-    return document.getElementById("answer_"+key);
+    return document.getElementById(k);
 }
 
-function putAnswer(key){
-    get(key).style.backgroundImage = "url(images/Button_"+key+"_geklickt.gif)";
-    t = window.setTimeout("putExplain",TIME);
+function putAnswer(){
+    get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_geklickt.gif)";
+    window.setTimeout("putCorrect",20);
+}
+
+function putCorrect(){
+    s = question["solution"] - 1;
+    get("answer_"+s).style.backgroundImage = "url(images/Button_"+s+"_richtig.gif)";
+    if(s != answer){
+        get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_gecklickt.gif)";
+    }
+    window.setTimeout("putExplain",20)
 }
 
 function putExplain(){
-    document.getElementById("answer").innerHTML = '<div id="answer_text">'+question["answer"]+'</div>';
-    t = window.setTimeout("loop",TIME);
+    get("answer").innerHTML = '<div id="answer_text">'+question["text"]+'</div>';
+    window.setTimeout("loop",60);
 }
 
 function shuffle(o){for(var j,x,i=o.length;i;j=Math.floor(Math.random()*i),x=o[--i],o[i]=o[j],o[j]= x);return o;}
@@ -29,27 +37,26 @@ function shuffle(o){for(var j,x,i=o.length;i;j=Math.floor(Math.random()*i),x=o[-
 function loop(){
     // Do Timeout Stuff here
     if(questions.length == 0){
-        questions = new Array();
-        questions = shuffle(questions);
+        questions = shuffle(data);
     }
     question = questions.pop();
 
-    answer = -1;
     get("question").innerHTML = question["question"];
     s = "";
     for(i=0;i<4;i++){
         s += '<div id="answer_'+i+'">'+question[i]+'</div>';
     }
     get("answer").innerHTML = s;
+    answer = -1;
 
-    t = window.setTimeout("putAnswer",TIME);
+    //window.setTimeout("putAnswer",60);
 }
 
 window.onkeyup = function(e) {
     var key = e.keyCode ? e.keyCode : e.which;
 
     key = key-64;
-    if(key >= 0 && key < 4){
+    if(key >= 0 && key < 4 && answer == -1){
         answer = key;
         window.clearTimeout(t);
         putAnswer();
