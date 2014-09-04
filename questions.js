@@ -8,7 +8,7 @@ data = [
 {
 "question": "What is the capital of Belgium?",
 "answers": [ "Berlin", "Paris", "Brussels", "Warsaw" ],
-"solution": 4,
+"solution": 3,
 "text": "Brussels is the biggest city in belgium and its captial."
 },
 {
