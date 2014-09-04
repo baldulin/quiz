@@ -63,23 +63,23 @@ body {
 #answer_0 {
 	top: 280px;
 	left: 25px;
-	background: url('images/Button_A_ungeklick.gif');
+	background: url('images/Button_0_ungeklick.gif');
 }
 
 #answer_1 {
 	top: 280px;
 	right: 25px;
-	background: url('images/Button_B_ungeklick.gif');
+	background: url('images/Button_1_ungeklick.gif');
 }
 
 #answer_2 {
 	top: 355px;
 	left: 25px;
-	background: url('images/Button_C_ungeklick.gif');
+	background: url('images/Button_2_ungeklick.gif');
 }
 
 #answer_3 {
 	top: 355px;
 	right: 25px;
-	background: url('images/Button_D_ungeklick.gif');
+	background: url('images/Button_3_ungeklick.gif');
 }
