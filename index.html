@@ -22,7 +22,7 @@ function putCorrect(){
     s = question["solution"] - 1;
     get("answer_"+s).style.backgroundImage = "url(images/Button_"+s+"_richtig.gif)";
     if(s != answer){
-        get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_gecklick.gif)";
+        get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_geklick.gif)";
     }
     window.setTimeout("putExplain();",20000)
 }
