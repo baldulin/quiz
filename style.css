@@ -9,43 +9,38 @@ body {
 }
 
 #main {
-	position: relative;
 	background-color: black;
-	margin: auto auto;
 	width: 100%;
 	height: 100%;
-	background: url('images/HG_Loesung.jpg');
-
+	background-image: url('images/HG_Loesung.jpg');
+    background-size:100%;
+    background-repeat:no-repeat;
+    overflow:hidden;
 	font-family: "DejaVu Sans";
+    padding:0px 0px 0px;
 }
 
 #question {
-	position: absolute;
-	top: 110px;
-	left: 70px;
-	width: 500px;
-	height: 130px;
-
-	font-size: 13px;
-	display: block;
-	padding-top:5px;
-	padding-left: 55px;
-	padding-right: 15px;
-	line-height: 13px;
+    float:left;
+    margin: 0 0 0;
+    width:100%;
+    height:30%;
+    padding-top:17%;
+    padding-left:12%;
+	font-size: 150%;
+	line-height: 100%;
 	display: block;
 	text-decoration: none;
     color: white;
 }
 
 #answer {
-	position: absolute;
-	left: 70px;
-	width: 500px;
-	top: 220px;
-	height: 210px;
-
-	font-size: 13px;
-	line-height: 21px;
+    margin:0 0 0;
+    padding:0 0 0;
+    float:left;
+    width:100%;
+	font-size: 100%;
+	line-height: 100%;
 }
 
 #answer_text {
@@ -53,33 +48,29 @@ body {
 }
 
 #answer_0, #answer_1, #answer_2, #answer_3 {
-	position: absolute;
-	width: 225px;
-	height: 53px;
-    padding-left:50px;
+    margin:0% 5% 3%;
+	width: 30%;
+    height:8%;
+    float:left;
+    padding-left:10%;
+    padding-top:2%;
     color:black;
+    background-size:100%;
+    background-repeat:no-repeat;
 }
 
 #answer_0 {
-	top: 280px;
-	left: 25px;
-	background: url('images/Button_0_ungeklick.gif');
+	background-image: url('images/Button_0_ungeklick.gif');
 }
 
 #answer_1 {
-	top: 280px;
-	right: 25px;
-	background: url('images/Button_1_ungeklick.gif');
+	background-image: url('images/Button_1_ungeklick.gif');
 }
 
 #answer_2 {
-	top: 355px;
-	left: 25px;
-	background: url('images/Button_2_ungeklick.gif');
+	background-image: url('images/Button_2_ungeklick.gif');
 }
 
 #answer_3 {
-	top: 355px;
-	right: 25px;
-	background: url('images/Button_3_ungeklick.gif');
+	background-image: url('images/Button_3_ungeklick.gif');
 }
