@@ -45,6 +45,8 @@ body {
 
 #answer_text {
     color: white;
+    width: 100%;
+    padding-left:12%;
 }
 
 #answer_0, #answer_1, #answer_2, #answer_3 {
