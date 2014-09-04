@@ -15,7 +15,7 @@ function get(k){
 
 function putAnswer(){
     get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_geklick.gif)";
-    window.setTimeout("putCorrect",20);
+    window.setTimeout("putCorrect();",20);
 }
 
 function putCorrect(){
@@ -24,12 +24,12 @@ function putCorrect(){
     if(s != answer){
         get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_gecklick.gif)";
     }
-    window.setTimeout("putExplain",20)
+    window.setTimeout("putExplain();",20)
 }
 
 function putExplain(){
     get("answer").innerHTML = '<div id="answer_text">'+question["text"]+'</div>';
-    window.setTimeout("loop",60);
+    window.setTimeout("loop();",60);
 }
 
 function shuffle(o){for(var j,x,i=o.length;i;j=Math.floor(Math.random()*i),x=o[--i],o[i]=o[j],o[j]= x);return o;}
@@ -50,7 +50,6 @@ function loop(){
     answer = -1;
 
     //window.setTimeout("putAnswer",60);
-    window.setTimeout("loop",5);
 }
 
 window.onkeyup = function(e) {
