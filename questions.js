@@ -1,4 +1,4 @@
-var json = '[
+data = [
 {
 "question": "What is the german capital?",
 "answers": [ "Hamburg", "Amsterdam", "Paris", "Berlin" ],
@@ -11,6 +11,4 @@ var json = '[
 "solution": 4,
 "text": "Brussels is the biggest city in belgium and its captial."
 }
-]'
-
-data = JSON.parse(json);
+];
