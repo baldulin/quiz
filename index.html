@@ -14,7 +14,7 @@ function get(k){
 }
 
 function putAnswer(){
-    get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_geklickt.gif)";
+    get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_geklick.gif)";
     window.setTimeout("putCorrect",20);
 }
 
@@ -22,7 +22,7 @@ function putCorrect(){
     s = question["solution"] - 1;
     get("answer_"+s).style.backgroundImage = "url(images/Button_"+s+"_richtig.gif)";
     if(s != answer){
-        get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_gecklickt.gif)";
+        get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_gecklick.gif)";
     }
     window.setTimeout("putExplain",20)
 }
@@ -44,21 +44,20 @@ function loop(){
     get("question").innerHTML = question["question"];
     s = "";
     for(i=0;i<4;i++){
-        s += '<div id="answer_'+i+'">'+question[i]+'</div>';
+        s += '<div id="answer_'+i+'">'+question["answers"][i]+'</div>';
     }
     get("answer").innerHTML = s;
     answer = -1;
 
     //window.setTimeout("putAnswer",60);
+    window.setTimeout("loop",5);
 }
 
 window.onkeyup = function(e) {
     var key = e.keyCode ? e.keyCode : e.which;
-
-    key = key-64;
+    key = key-65;
     if(key >= 0 && key < 4 && answer == -1){
         answer = key;
-        window.clearTimeout(t);
         putAnswer();
     }
 }
@@ -77,5 +76,6 @@ window.onkeyup = function(e) {
     <div id="answer_text">Heres the Text</div> -->
    </div>
   </div>
+  <script type="text/javascript">loop();</script>
  </body>
 </html>
