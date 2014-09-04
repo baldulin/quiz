@@ -7,6 +7,13 @@
   <script type="text/javascript" src="questions.js"></script>
   <script type="text/javascript">
 /* Your Code here */
+function shuffle(o){
+	for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+	return o;
+};
+
+shuffle(data);
+
 alert(data[0]["question"]);
   </script>
  </head>
