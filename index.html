@@ -9,6 +9,7 @@
 questions = new Array();
 question = null;
 answer = -1;
+index = 0
 function get(k){
     return document.getElementById(k);
 }
@@ -24,7 +25,7 @@ function putCorrect(){
     if(s != answer){
         get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_geklick.gif)";
     }
-    window.setTimeout("putExplain();",1000)
+    window.setTimeout("putExplain();",5000)
 }
 
 function putExplain(){
@@ -39,8 +40,9 @@ function loop(){
     if(questions.length == 0){
         questions = shuffle(data);
     }
-    question = questions.pop();
+    question = questions[index];
 
+    index = (index +1) % questions.length;
     get("question").innerHTML = question["question"];
     s = "";
     for(i=0;i<4;i++){

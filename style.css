@@ -4,8 +4,10 @@
 }
 
 body {
-	padding: 0;
+	padding: 5% 20% 5%;
 	margin: 0;
+	background-color:black;
+
 }
 
 #main {
@@ -39,20 +41,20 @@ body {
     padding:0 0 0;
     float:left;
     width:100%;
-	font-size: 100%;
-	line-height: 100%;
 }
 
 #answer_text {
     color: white;
-    width: 100%;
+    width: 70%;
+    font-size:30px;
     padding-left:12%;
+    padding-right:12%;
 }
 
 #answer_0, #answer_1, #answer_2, #answer_3 {
     margin:0% 5% 3%;
 	width: 30%;
-    height:8%;
+    height:9%;
     float:left;
     padding-left:10%;
     padding-top:2%;
@@ -74,5 +76,4 @@ body {
 }
 
 #answer_3 {
-	background-image: url('images/Button_3_ungeklick.gif');
-}
+	background-image: url('images/Button_3_ungeklick.gif');3}
