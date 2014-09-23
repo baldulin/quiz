@@ -6,17 +6,32 @@
   <script type="text/javascript" src="questions.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
   <script type="text/javascript">
+// Number of milliseconds till the answer is shown
+// after an answer was selected.
+wait_till_answer = 5000;
+
+// Number of milliseconds till the explanation is shown
+wait_till_explain = 5000;
+
+// Number of seconds the explanation is shown
+wait_till_next_question = 10000;
+
+
+// Internal Globals
 questions = new Array();
 question = null;
 answer = -1;
-index = 0
+index = -1;
+
+
+// Pieces of Code
 function get(k){
     return document.getElementById(k);
 }
 
 function putAnswer(){
     get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_geklick.gif)";
-    window.setTimeout("putCorrect();",1000);
+    window.setTimeout("putCorrect();", wait_till_answer);
 }
 
 function putCorrect(){
@@ -25,33 +40,64 @@ function putCorrect(){
     if(s != answer){
         get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_geklick.gif)";
     }
-    window.setTimeout("putExplain();",5000)
+    window.setTimeout("putExplain();", wait_till_explain);
 }
 
 function putExplain(){
     get("answer").innerHTML = '<div id="answer_text">'+question["text"]+'</div>';
-    window.setTimeout("loop();",10000);
+    window.setTimeout("loop();",wait_till_next_question);
 }
 
 function shuffle(o){for(var j,x,i=o.length;i;j=Math.floor(Math.random()*i),x=o[--i],o[i]=o[j],o[j]= x);return o;}
 
 function loop(){
-    // Do Timeout Stuff here
-    if(questions.length == 0){
-        questions = shuffle(data);
+    // Select question if all where once shown
+    if(index != -1){
+        q = questions[index];
     }
+    else{
+        questions = shuffle(data);
+        q = 0;
+    }
+
+    // Increment index
+    index = index + 1
+    if(index >= questions.length){
+        questions = shuffle(data);
+        index = 0;
+
+        // Check if question is asked twice
+        if(questions[0] == q){
+            i = 1 + Math.floor(Math.random()*(questions.length - 2));
+            questions[0] = questions[i];
+            questions[i] = q;
+        }
+    }
+
+    // Select Question
     question = questions[index];
 
-    index = (index +1) % questions.length;
+    // Set up question
     get("question").innerHTML = question["question"];
-    s = "";
+
+    // Shuffle questions
+    a = question["answers"][question.solution - 1];
+    question["answers"] = shuffle(question["answers"])
+
+    // Now set the solution and set up all of the answers
+    s = ""
     for(i=0;i<4;i++){
         s += '<div id="answer_'+i+'">'+question["answers"][i]+'</div>';
+
+        // Thats our solution
+        if(question["answers"][i] == a){
+            question.solution = i+1
+        }
     }
     get("answer").innerHTML = s;
-    answer = -1;
 
-    //window.setTimeout("putAnswer",60);
+    // Set to answer mode
+    answer = -1;
 }
 
 window.onkeyup = function(e) {
@@ -68,12 +114,12 @@ window.onkeyup = function(e) {
   <div id="main">
    <div id="question">Frage Frage</div>
    <div id="answer">
-       <!-- Variante A: Antworten anzeigen -->
-    <div id="answer_0">Aber bitte</div>
-    <div id="answer_1">Bbere</div>
-    <div id="answer_2">Cere cit canum</div>
-    <div id="answer_3">Ddendum it salamat</div><!-- -->
-<!-- Variante B: Lösung anzeigen
+<!-- This is the answer Format -->
+    <div id="answer_0">Answer A</div>
+    <div id="answer_1">Answer B</div>
+    <div id="answer_2">Answer C</div>
+    <div id="answer_3">Answer D</div>
+<!-- Show the Explanation
     <div id="answer_text">Heres the Text</div> -->
    </div>
   </div>
