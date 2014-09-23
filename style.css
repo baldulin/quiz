@@ -1,24 +1,24 @@
 @font-face {
-	font-family: "Bello, Script";
-	src: url(images/Bello-Script.ttf);
+    font-family: "Bello, Script";
+    src: url(images/Bello-Script.ttf);
 }
 
 body {
-	padding: 5% 20% 5%;
-	margin: 0;
-	background-color:black;
+    padding: 5% 20% 5%;
+    margin: 0;
+    background-color:black;
 
 }
 
 #main {
-	background-color: black;
-	width: 100%;
-	height: 100%;
-	background-image: url('images/HG_Loesung.jpg');
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/HG_Loesung.jpg');
     background-size:100%;
     background-repeat:no-repeat;
     overflow:hidden;
-	font-family: "DejaVu Sans";
+    font-family: "DejaVu Sans";
     padding:0px 0px 0px;
 }
 
@@ -29,10 +29,10 @@ body {
     height:30%;
     padding-top:17%;
     padding-left:12%;
-	font-size: 150%;
-	line-height: 100%;
-	display: block;
-	text-decoration: none;
+    font-size: 150%;
+    line-height: 100%;
+    display: block;
+    text-decoration: none;
     color: white;
 }
 
@@ -53,7 +53,7 @@ body {
 
 #answer_0, #answer_1, #answer_2, #answer_3 {
     margin:0% 5% 3%;
-	width: 30%;
+    width: 30%;
     height:9%;
     float:left;
     padding-left:10%;
@@ -61,19 +61,20 @@ body {
     color:black;
     background-size:100%;
     background-repeat:no-repeat;
+    background-color:white;
 }
 
 #answer_0 {
-	background-image: url('images/Button_0_ungeklick.gif');
+    background-image: url('images/Button_0_ungeklick.gif');
 }
 
 #answer_1 {
-	background-image: url('images/Button_1_ungeklick.gif');
+    background-image: url('images/Button_1_ungeklick.gif');
 }
 
 #answer_2 {
-	background-image: url('images/Button_2_ungeklick.gif');
+    background-image: url('images/Button_2_ungeklick.gif');
 }
 
 #answer_3 {
-	background-image: url('images/Button_3_ungeklick.gif');3}
+    background-image: url('images/Button_3_ungeklick.gif');3}
