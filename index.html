@@ -58,7 +58,6 @@ function loop(){
     else{
         questions = shuffle(data);
         q = 0;
-    	question = questions[0];
     }
 
     // Increment index
@@ -74,6 +73,9 @@ function loop(){
             questions[i] = q;
         }
     }
+
+    // Select Question
+    question = questions[index];
 
     // Set up question
     get("question").innerHTML = question["question"];
