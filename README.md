@@ -1,4 +1,4 @@
-#Little Quiz for multiple Use (v1.1)
+#Little Quiz for multiple Use (v1.2)
 
 
 ## Set up questions
@@ -11,13 +11,13 @@ The questions must be stored into the `questions.js` file.
 Put the images under `images/`. Their names should be:
 
 ```
-BUTTON_ID_richtig.gif
-BUTTON_ID_geklick.gif
-BUTTON_ID_ungeklick.gif
+button_ID_correct.gif
+button_ID_clicked.gif
+button_ID_unclicked.gif
 ```
 
 Where `ID` is `0` to `3`. For the background image
-place `background.gif` into `images/`
+place `background.jpg` into `images/`
 
 
 ## Set up style

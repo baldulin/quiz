@@ -30,15 +30,15 @@ function get(k){
 }
 
 function putAnswer(){
-    get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_geklick.gif)";
+    get("answer_"+answer).style.backgroundImage = "url(images/button_"+answer+"_clicked.png)";
     window.setTimeout("putCorrect();", wait_till_answer);
 }
 
 function putCorrect(){
     s = question["solution"] - 1;
-    get("answer_"+s).style.backgroundImage = "url(images/Button_"+s+"_richtig.gif)";
+    get("answer_"+s).style.backgroundImage = "url(images/button_"+s+"_correct.png)";
     if(s != answer){
-        get("answer_"+answer).style.backgroundImage = "url(images/Button_"+answer+"_geklick.gif)";
+        get("answer_"+answer).style.backgroundImage = "url(images/button_"+answer+"_clicked.png)";
     }
     window.setTimeout("putExplain();", wait_till_explain);
 }

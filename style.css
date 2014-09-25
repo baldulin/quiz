@@ -61,20 +61,19 @@ body {
     color:black;
     background-size:100%;
     background-repeat:no-repeat;
-    background-color:white;
 }
 
 #answer_0 {
-    background-image: url('images/Button_0_ungeklick.gif');
+    background-image: url('images/button_0_unclicked.png');
 }
 
 #answer_1 {
-    background-image: url('images/Button_1_ungeklick.gif');
+    background-image: url('images/button_1_unclicked.png');
 }
 
 #answer_2 {
-    background-image: url('images/Button_2_ungeklick.gif');
+    background-image: url('images/button_2_unclicked.png');
 }
 
 #answer_3 {
-    background-image: url('images/Button_3_ungeklick.gif');3}
+    background-image: url('images/button_3_unclicked.png');3}
