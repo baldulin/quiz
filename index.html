@@ -8,13 +8,13 @@
   <script type="text/javascript">
 // Number of milliseconds till the answer is shown
 // after an answer was selected.
-wait_till_answer = 5000;
+wait_till_answer = 2000;
 
 // Number of milliseconds till the explanation is shown
-wait_till_explain = 5000;
+wait_till_explain = 2000;
 
-// Number of seconds the explanation is shown
-wait_till_next_question = 10000;
+// Number of milliseconds the explanation is shown
+wait_till_next_question = 8000;
 
 
 // Internal Globals
@@ -87,7 +87,7 @@ function loop(){
     // Now set the solution and set up all of the answers
     s = ""
     for(i=0;i<4;i++){
-        s += '<div id="answer_'+i+'">'+question["answers"][i]+'</div>';
+        s += '<div id="answer_'+i+'" onclick="mouseClick('+i+');" style="cursor:pointer;">'+question["answers"][i]+'</div>';
 
         // Thats our solution
         if(question["answers"][i] == a){
@@ -100,6 +100,13 @@ function loop(){
     answer = -1;
 }
 
+function mouseClick(p) {
+    if(p >= 0 && p < 4 && answer == -1) {
+        answer = p;
+        putAnswer();
+    }
+}
+
 window.onkeyup = function(e) {
     var key = e.keyCode ? e.keyCode : e.which;
     key = key-65;
@@ -108,11 +115,11 @@ window.onkeyup = function(e) {
         putAnswer();
     }
 }
-  </script>
+</script>
  </head>
  <body>
   <div id="main">
-   <div id="question">Frage Frage</div>
+   <div id="question">Question</div>
    <div id="answer">
 <!-- This is the answer Format -->
     <div id="answer_0">Answer A</div>
